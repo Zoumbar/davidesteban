@@ -23,7 +23,16 @@ const randomMovie = (req, res) => {
     )
     .then((response) => {
       const data = response.data.title;
-      res.send(data);
+      const result = {
+        frames: [
+          {
+            index: 0,
+            text: data,
+            icon: "i5162",
+          },
+        ],
+      };
+      res.json(result);
     })
     .catch((error) => {
       const errorMovie = [
@@ -47,11 +56,20 @@ const randomMovie = (req, res) => {
         "Easter Egg : david esteban les beaugoss",
         "22 Jump Street",
         "Cinderella",
-        "Karate Kid"
+        "Karate Kid",
       ];
       const unfound = randomIntFromInterval(0, errorMovie.length);
-      res.send(errorMovie[unfound]);
-      console.log('eror lllol')
+      const result = {
+        frames: [
+          {
+            index: 0,
+            text: errorMovie[unfound],
+            icon: "i5162",
+          },
+        ],
+      };
+      res.send(result);
+      console.log("eror lllol");
     });
 };
 
